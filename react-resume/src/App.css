@@ -1,0 +1,25 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+}
+
+#nav-pane, #trivia-pane {
+  background-color:darkseagreen;
+}
+
+#content-pane {
+  flex:auto;
+}
+
+#contact-section {
+  background-color: pink;
+}
+
+.section-title {
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
