@@ -1,13 +1,21 @@
 import { useState } from 'react'
 import './App.css'
 
+//Template component to create resume sections
 function Section({ children, title, id }) {
+  //Used to toggle showing or hiding content under each section heading on button click
+  const [hide, setHide] = useState(false);
+  function hideSection () {
+    setHide(!hide);
+  }
+  
   return (
     <div id={id} className='resume-section'>
       <div className='section-heading'>
         <h2 className='section-title'>{title}</h2>
+        <button onClick={hideSection}>{hide ? 'Show' : 'Hide'}</button>
       </div>
-      <div className='section-data'>{children}</div>
+      {!hide && <div className='section-data'>{children}</div>}
     </div>
   );
 }
@@ -54,7 +62,7 @@ function ContactInfo () {
   return (
     <>
       {contactDetails.map(detail => 
-      <p className='contact-detail' key={detail.id}>{detail.heading}: {detail.data}</p>
+      <p className='contact-detail' key={detail.id}><h4 className='contact-heading'>{detail.heading}:</h4> {detail.data}</p>
       )}
     </>
   );
@@ -246,7 +254,6 @@ function Programming () {
       {uniProgramming.map(uni => 
           <div key={uni.id}>
             <p><u>{uni.unit}</u></p>
-            <p>Lanugages:</p> 
             <ul>{uni.languages.map((language, index) => 
               <li key={index}>{language}</li>
             )}
@@ -359,10 +366,21 @@ function References () {
 function App() {
   return (
     <>
+      {/* Left hand side pane with table of contents */}
       <div id='nav-pane'>
-        <p>placeholder text</p>
+        <h1>Cameron Anderson Resume</h1>
+        <h4>Contents</h4>
+        <div className='contents-table'>
+          <p><a href='#contact-section'>General Information</a></p>
+          <p><a href='#education-section'>Education</a></p>
+          <p><a href='#employment-section'>Employment</a></p>
+          <p><a href='#programming-section'>Programming Experience</a></p>
+          <p><a href='#skills-section'>Skills</a></p>
+          <p><a href='#references-section'>References</a></p>
+        </div>
       </div>
 
+      {/* Main content section of resume in center of screen */}
       <div id='content-pane'>
         <Section title={'General Information'} id={'contact-section'}>
           <ContactInfo></ContactInfo>
@@ -376,7 +394,7 @@ function App() {
           <Employment></Employment>
         </Section>
 
-        <Section title={'Programming Epxerience'} id={'programming-section'}>
+        <Section title={'Programming Experience'} id={'programming-section'}>
           <Programming></Programming>
         </Section>
 
@@ -389,6 +407,7 @@ function App() {
         </Section>
       </div>
 
+      {/* Right hand side pane, demonstrating API use to generate sport trivia */}
       <div id='trivia-pane'>
         <p>placeholder text</p>
       </div>

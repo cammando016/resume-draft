@@ -1,25 +1,50 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
   display: flex;
+  font-family:'Courier New', Courier, monospace;
 }
 
-#nav-pane, #trivia-pane {
-  background-color:darkseagreen;
+body {
+  margin: 0;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-heading button {
+  height: 30px;
+  align-self: center;
+}
+
+#nav-pane {
+  min-width: 15%;
+  height: 100;
+  background-color: lightblue;
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+#trivia-pane {
+  min-width: 25%;
+  background-color: lightgoldenrodyellow;
 }
 
 #content-pane {
   flex:auto;
+  max-width: 60%;
+  margin: 0 2%;
 }
 
-#contact-section {
-  background-color: pink;
+.contact-heading {
+  display: inline;
 }
 
-.section-title {
-  text-align: center;
-}
-
-.card {
-  padding: 2em;
+.contents-table {
+  border-right-style: solid;
+  border-right-color: grey;
+  border-width: 3px;
+  margin-right: 10px;
 }
