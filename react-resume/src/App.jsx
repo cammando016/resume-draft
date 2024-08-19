@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function Section({ children, title, id }) {
   return (
     <div id={id} className='resume-section'>
-      <h2 className='section-title'>{title}</h2>
+      <div className='section-heading'>
+        <h2 className='section-title'>{title}</h2>
+      </div>
       <div className='section-data'>{children}</div>
     </div>
   );
@@ -43,6 +43,11 @@ function ContactInfo () {
       id: 5,
       heading: 'Favourite Up&Go',
       data: 'Protein Strawberry'
+    },
+    {
+      id: 6,
+      heading: 'Hobbies',
+      data: 'Snowboarding, Watching AFL, NBA & NFL, Playing story games'
     }
   ];
   
@@ -98,18 +103,50 @@ function Employment () {
           posid: 0,
           postitle: 'Team Leader',
           dates: 'July 2015 - October 2016',
-          duties: ['Area supervision', 'New employee training/onboarding', 'Customer Service']
+          duties: [
+            'Area supervision', 
+            'New employee training/onboarding', 
+            'Customer Service'
+          ]
         },
         {
           posid: 1,
           postitle: 'Manager',
           dates: 'October 2016 - present',
-          duties: ['Site supervision', 'Oversee team development programs', 'Site projection & technical support leader', 'Finance & complaince manager']
+          duties: [
+            'Site supervision', 
+            'Oversee team development programs', 
+            'Site projection & technical support leader', 
+            'Finance & complaince manager'
+          ]
         }
       ]
     },
     {
       id: 1,
+      location: 'Village Cinemas - Fixed term project work',
+      dates: 'March 2024 - July 2024',
+      positions: [
+        {
+          posid: 0,
+          postitle: 'Projection/Technical Team - DCinema Developer (Secondment)',
+          dates: 'March 2024 - May 2024',
+          duties: [
+            'My main project focus with the projection team was creating a python script to send and receive MQTT messages via AWS. These messages were received from an IoT device with the intention of allowing guests to control the volume of a cinema during private screenings. During the time on this project, I also assisted with other general projection team duties including content management, hardware replacement and writing guides for projector troubleshooting.'
+          ]
+        },
+        {
+          posid: 1,
+          postitle: 'Learning & Development Project Assistant',
+          dates: 'May 2024 - July 2024',
+          duties: [
+            'On the back of the projection project, I was then asked to join another department to assist in the rollout and training for a new frontline position, the Guest Experience Supervisor. I was part of the team that determined the duties which should be fulfilled and then designed and facilitated an onboarding training day for the successful applicants. This rollout was very well received by the frontline leaders, as a result our team is returning to overhaul the current training for new hires joining the company.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 2,
       location: 'Halo Service Solutions',
       dates: 'April 2023 - October 2023',
       positions: [
@@ -117,7 +154,11 @@ function Employment () {
           posid: 0,
           postitle: 'Graduate Software Consultant',
           dates: 'April 2023 - October 2023',
-          duties: ['Software support', 'SQL reporting', 'Consulting & product education']
+          duties: [
+            'Software support', 
+            'SQL reporting', 
+            'Consulting & product education'
+          ]
         }
       ]
     }
@@ -149,6 +190,82 @@ function Employment () {
           </div>
         </div>
       )}
+    </>
+  )
+}
+
+function Programming () {
+  const uniProgramming = [
+    {
+      id: 0,
+      unit: 'Introduction to Programming',
+      languages: [
+        'Ruby'
+      ],
+      details: 'First semester unit introducing programming concepts. This was a beginner class teaching the basics of variables and data types, sequencing and best practices.'
+    },
+    {
+      id: 1,
+      unit: 'Introduction to Web Development',
+      languages: [
+        'HTML',
+        'CSS',
+        'JavaScript'
+      ],
+      details: 'Another first semester unit, teaching the basics of front end web development.'
+    },
+    {
+      id: 2,
+      unit: 'Object Oriented Programming',
+      languages: [
+        'C#'
+      ],
+      details: 'This was a second year unit following intro to programming. It focused on using classes, functions and other reusable techniques for more efficent code.'
+    }
+  ];
+
+  const jobProgramming = [
+    {
+      id: 0,
+      language: 'SQL',
+      location: 'Halo Service Solutions',
+      details: 'As part of my graduate role at Halo, customer support included bespoke SQL reporting. I had a basic understanding of SQL before starting the role, but I had to learn the company schema to udnerstand how to present data requested by customers and reinforce my SQL knowledge to complete the reports efficiently. I began taking most report tickets after my first few months, and found it extremely enjoyable becoming more confident and knowledgable about the reports we could provide.'
+    },
+    {
+      id: 1,
+      language: 'Python',
+      location: 'Village Cinemas',
+      details: 'During the projection project I worked on, I wrote a python script that subscribed and published MQTT messaged via AWS. The script received a message from the end user device with a cinema number and a volume command for up or down. From a parsed config file specifying the audio appliance type, it then generates a TCP message to send to the audio appliance to adjust the in cinema volume. Once the volume was adjusted, the audio unit sends an update of the new volume which is published back to the end user device. As I had never written python code before, I had to apply the general programming skills I had learned to a new language which was a good test of my university experience applied to a real project. I found it extremely rewarding pushing through each of the various roadblocks that came up during this project and having an opportunity to apply the concepts I had studied.'
+    }
+  ]
+
+  return (
+    <>
+    <div className='uni-programming'>
+      <h3>University Programming</h3>
+      {uniProgramming.map(uni => 
+          <div key={uni.id}>
+            <p><u>{uni.unit}</u></p>
+            <p>Lanugages:</p> 
+            <ul>{uni.languages.map((language, index) => 
+              <li key={index}>{language}</li>
+            )}
+            </ul>
+            <p>{uni.details}</p>
+          </div>
+      )}
+    </div>
+
+    <div className='other-programming'>
+      <h3>Other Programming</h3>
+      {jobProgramming.map(job => 
+        <div key={job.id}>
+          <p><u>{job.location}</u></p>
+          <p>{job.language}</p>
+          <p>{job.details}</p>
+        </div>
+      )}
+    </div>
     </>
   )
 }
@@ -192,20 +309,20 @@ function References () {
       title: 'District Manager',
       company: 'Village Cinemas',
       email: 'tristan_fulham@village-cinemas.com',
-      phone: ''
+      phone: '0419 971 153'
     },
     {
       name: 'Ben Schulz',
-      title: '',
+      title: 'Digital Cinema Lead',
       company: 'Village Cinemas',
-      email: '',
+      email: 'ben_schulz@village-cinemas.com',
       phone: ''
     },
     {
       name: 'Brent Deayton',
-      title: '',
+      title: 'Learning & Development Coordinator',
       company: 'Village Cinemas',
-      email: '',
+      email: 'brent_deayton@village-cinemas.com',
       phone: ''
     }
   ];
@@ -247,7 +364,7 @@ function App() {
       </div>
 
       <div id='content-pane'>
-        <Section title={'Contact Information'} id={'contact-section'}>
+        <Section title={'General Information'} id={'contact-section'}>
           <ContactInfo></ContactInfo>
         </Section>
 
@@ -257,6 +374,10 @@ function App() {
 
         <Section title={'Employment'} id={'employment-section'}>
           <Employment></Employment>
+        </Section>
+
+        <Section title={'Programming Epxerience'} id={'programming-section'}>
+          <Programming></Programming>
         </Section>
 
         <Section title={'Skills'} id={'skills-section'}>
@@ -275,33 +396,6 @@ function App() {
   );
 }
 
-// function App() {
-//   const [count, setCount] = useState(0)
 
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
 
 export default App
