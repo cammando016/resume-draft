@@ -20,6 +20,7 @@ function Section({ children, title, id }) {
   );
 }
 
+//Resume Section Components
 function ContactInfo () {
   const contactDetails = [
     {
@@ -148,7 +149,7 @@ function Employment () {
           postitle: 'Learning & Development Project Assistant',
           dates: 'May 2024 - July 2024',
           duties: [
-            'On the back of the projection project, I was then asked to join another department to assist in the rollout and training for a new frontline position, the Guest Experience Supervisor. I was part of the team that determined the duties which should be fulfilled and then designed and facilitated an onboarding training day for the successful applicants. This rollout was very well received by the frontline leaders, as a result our team is returning to overhaul the current training for new hires joining the company.'
+            'On the back of the projection project, I was then asked to join another department to assist in the rollout and training for a new frontline position, the Guest Experience Supervisor. I was part of the team that determined the duties which should be fulfilled and then designed and facilitated an onboarding training day for the successful applicants. This rollout was very well received by the frontline leaders, as a result our team is returning to continue working together, with our next task to overhaul the current training for new hires joining the company.'
           ]
         }
       ]
@@ -329,7 +330,7 @@ function References () {
       name: 'Brent Deayton',
       title: 'Learning & Development Coordinator',
       company: 'Village Cinemas',
-      email: 'brent_deayton@village-cinemas.com',
+      email: 'brent_deayton@vrl.com.au',
       phone: ''
     }
   ];
@@ -346,7 +347,7 @@ function References () {
   };
 
   return (
-    <>
+    <div className='referees'>
       {referees.map(referee => 
         <div key={referee.id} className='referee' id={referee.name}>
           <h4>{referee.name}</h4>
@@ -359,8 +360,61 @@ function References () {
           </ul>
         </div>
       )}
+    </div>
+  )
+}
+
+//Sport components
+function SportForm () {
+  return (
+    <>
+      <form>
+        <h2>Choose your favourite sport</h2>
+        <input type='radio' name='sport' id='basketball' value='Basketball'></input>
+        <label htmlFor='basketball'>Basketball</label>
+        <input type='radio' name='sport' id='afl' value='AFL' defaultChecked></input>
+        <label htmlFor='afl'>AFL</label>
+        <input type='radio' name='sport' id='nhl' value='NHL'></input>
+        <label htmlFor='nhl'>NHL</label>
+      </form>
     </>
   )
+}
+
+function Gif() {
+  return (
+    <>
+      <div id='sport-gif'>
+        <img id='gif' src='#' alt='Sport Gif - Click Update Gif to generate!'></img>
+        <div>
+          <button onClick={updateGif}>Update Gif</button>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function Sport ({ children }) {
+  return (
+    <div id='sport-pane'>
+      {children}
+    </div>
+  )
+}
+
+//Function to up sport gif from API data
+function updateGif() {
+  const sport = document.querySelector('input[name="sport"]:checked').value;  
+  const img = document.querySelector('#gif');
+  const gifUrl = 'https://api.giphy.com/v1/gifs/translate?api_key=tfNuQGPXxDFDq0JKfJ45Vu5wnkPzTZKy&s=' + sport;
+  
+  fetch(gifUrl, {mode:'cors'})
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(response) {
+      img.src = response.data.images.original.url;
+    });
 }
 
 function App() {
@@ -368,16 +422,19 @@ function App() {
     <>
       {/* Left hand side pane with table of contents */}
       <div id='nav-pane'>
-        <h1>Cameron Anderson Resume</h1>
-        <h4>Contents</h4>
-        <div className='contents-table'>
-          <p><a href='#contact-section'>General Information</a></p>
-          <p><a href='#education-section'>Education</a></p>
-          <p><a href='#employment-section'>Employment</a></p>
-          <p><a href='#programming-section'>Programming Experience</a></p>
-          <p><a href='#skills-section'>Skills</a></p>
-          <p><a href='#references-section'>References</a></p>
+        <div className='nav-text'>
+          <h1>Cameron Anderson Resume</h1>
+          <h4>Contents</h4>
+          <div className='contents-table'>
+            <p><a href='#contact-section'>General Information</a></p>
+            <p><a href='#education-section'>Education</a></p>
+            <p><a href='#employment-section'>Employment</a></p>
+            <p><a href='#programming-section'>Programming Experience</a></p>
+            <p><a href='#skills-section'>Skills</a></p>
+            <p><a href='#references-section'>References</a></p>
+          </div>
         </div>
+        <button id='cover-letter'>Cover Letter</button>
       </div>
 
       {/* Main content section of resume in center of screen */}
@@ -408,13 +465,12 @@ function App() {
       </div>
 
       {/* Right hand side pane, demonstrating API use to generate sport trivia */}
-      <div id='trivia-pane'>
-        <p>placeholder text</p>
-      </div>
+      <Sport>
+        <SportForm></SportForm>
+        <Gif></Gif>
+      </Sport>
     </>
   );
 }
-
-
 
 export default App

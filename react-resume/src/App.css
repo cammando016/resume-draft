@@ -8,6 +8,55 @@ body {
   margin: 0;
 }
 
+/* Styling for left hand side navigation panel */
+#nav-pane {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 15%;
+  max-width: 15%;
+  min-height: 100vh;
+  background-color: lightblue;
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+#nav-text {
+  flex:auto;
+}
+
+.contents-table {
+  border-left-style: solid;
+  border-left-color: grey;
+  border-width: 3px;
+  padding-left: 10px;
+}
+
+.contents-table a {
+  color: black;
+}
+
+.contents-table a:hover {
+  color: white;
+}
+
+#cover-letter {
+  position: fixed;
+  bottom: 10px;
+}
+
+/* Styling for main resume content in the middle */
+#content-pane {
+  margin-left: 17%;
+  padding-left: 1%;
+  flex:auto;
+  max-width: 58%;
+  margin-right: 2%;
+}
+
+/* Split section heading and show/hide toggle button */
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -18,33 +67,40 @@ body {
   align-self: center;
 }
 
-#nav-pane {
-  min-width: 15%;
-  height: 100;
-  background-color: lightblue;
-  padding-left: 2%;
-  display: flex;
-  flex-direction: column;
-}
-
-#trivia-pane {
-  min-width: 25%;
-  background-color: lightgoldenrodyellow;
-}
-
-#content-pane {
-  flex:auto;
-  max-width: 60%;
-  margin: 0 2%;
-}
-
+/* Used in the general information section to keep <h> element on same line as data */
 .contact-heading {
   display: inline;
 }
 
-.contents-table {
-  border-right-style: solid;
-  border-right-color: grey;
-  border-width: 3px;
-  margin-right: 10px;
+/* Style the references list so that each reference sits neatly on screen */
+.referees {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.referee {
+  margin: 0 15px;
+}
+
+.referee ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for the right hand side trivia API pane */
+#sport-pane {
+  border-left-style: solid;
+  border-left-color: grey;
+  min-width: 25%; 
+  margin-left: auto;
+  padding: 10px;
+}
+
+#sport-pane h2 {
+  margin-top: 0;
+}
+
+#gif {
+  max-width: 90%;
+  padding: 5%;
 }
