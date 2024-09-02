@@ -42,9 +42,14 @@ body {
   color: white;
 }
 
-#cover-letter {
+#portfolio {
   position: fixed;
-  bottom: 10px;
+  bottom: 30px;
+}
+
+.portfolio-link {
+  display: block;
+  margin: 5px 5px 5px 0px;
 }
 
 /* Styling for main resume content in the middle */
@@ -87,7 +92,7 @@ body {
   padding: 0;
 }
 
-/* Styling for the right hand side trivia API pane */
+/* Styling for the right hand side gif pane */
 #sport-pane {
   border-left-style: solid;
   border-left-color: grey;
