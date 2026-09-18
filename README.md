@@ -1,8 +1,7 @@
-# React + Vite
+# First React Project - My Resume
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Creating a single page to display my resume contents was the first project I completed after learning basics of React development. This project allowed me to practice building reusable components with content provided by arrays with my information and passed in to the components as props.
 
-Currently, two official plugins are available:
+I also added a section to the side demonstrating the ability to connect to an external API and return a gif based on a user's selection, which at the time was a new skill I had learned.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was completed using React, JSX, HTML & CSS. Although I have created significantly more in depth projects since this one, I still include it on my portfolio to show the progression I have made from my first published site.
