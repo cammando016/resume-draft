@@ -1,6 +1,4 @@
-# First React Project - My Resume
-
-_About This Project_
+# About This Project: Resume
 
 Creating a single page to display my resume contents was the first project I completed after learning basics of React development. This project allowed me to practice building reusable components with content provided by arrays with my information and passed in to the components as props.
 
